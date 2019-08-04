@@ -1,0 +1,20 @@
+﻿<Window x:Class="Client_Page.Window1"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Client_Page"
+        mc:Ignorable="d"
+          Title="Window1" Height="300" Width="400">
+    <Grid Margin="-18,1,0.333,-9.333">
+        <StackPanel Margin="21,24,263,174" RenderTransformOrigin="0.021,0.311">
+            <Image x:Name="Image2"  Source="C:\Users\sg051\source\repos\Client_Page\Client_Page\Resources/감자.PNG" Margin="10,-43,-48.667,-94"/>
+        </StackPanel>
+        <Label Margin="69,106,284,134" FontWeight="Bold" FontSize="15">ID</Label>
+        <Label Margin="40,149,281,91" FontWeight="Bold" FontSize="15">Password</Label>
+        <PasswordBox x:Name="PasswordBox" Margin="131,154,52,89"/>
+        <Button x:Name="loginButton" Content="login" Click="LoginButton_Click" Margin="164,204,90,36"/>
+        <Label Content="로그인" HorizontalAlignment="Left" Height="39" Margin="201,55,0,0" VerticalAlignment="Top" Width="80" FontSize="24" FontWeight="Bold" />
+        <TextBox x:Name="IDBox" Margin="129,106,50,136"/>
+    </Grid>
+</Window>

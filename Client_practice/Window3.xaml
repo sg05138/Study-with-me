@@ -1,0 +1,18 @@
+﻿<Window x:Class="Client_Page.Window3"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Client_Page"
+        mc:Ignorable="d"
+       Title="Window3" Height="380" Width="514">
+    <Grid>
+        <Image x:Name="Image1" Source="C:\Users\sg051\source\repos\Server_Page\Server_Page\Resources\알린.PNG" Margin="1,0,0.333,-81.333" />
+        <StackPanel/>
+       
+        <TextBox x:Name="ChatBox" HorizontalAlignment="Left" Height="154" Width="131" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Margin="181,116,0,0"/>
+        <Label x:Name ="UID" Content="님 안녕하세요:)" HorizontalAlignment="Left" Margin="43,66,0,0" VerticalAlignment="Top" Width="270" FontSize="16" FontWeight="Bold"/>
+        <TextBlock HorizontalAlignment="Left" Margin="49,117,0,0" TextWrapping="Wrap" Text="TextBlock" VerticalAlignment="Top" Height="150" Width="122"/>
+
+    </Grid>
+</Window>
