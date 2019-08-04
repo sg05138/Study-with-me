@@ -1,0 +1,23 @@
+﻿<Window x:Class="Server_Page.Window2"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Server_Page"
+        mc:Ignorable="d"
+         Title="Window2" Height="350" Width="450">
+    <Grid>
+        <StackPanel Margin="7,12,251.333,174.667">
+            <Image Source = "C:\Users\sg051\source\repos\Server_Page\Server_Page\Resources\우디버즈.PNG" Height="132" Margin="0,0,-27,0"/>
+        </StackPanel>
+        <Label Margin="183,55,211.333,230.667" FontWeight="Bold">이름</Label>
+        <TextBox x:Name="NameTextBox" Margin="225,53,25.333,235.667"/>
+        <Label Margin="183,96,217.333,192.667" FontWeight="Bold">나이</Label>
+        <TextBox x:Name="AgeTextBox" Margin="225,95,27.333,192.667"/>
+        <Label Margin="30,160,342.333,123.667" FontWeight="Bold">NewID</Label>
+        <TextBox x:Name="NewIDTextBox" Margin="117,157,27.333,129.667"/>
+        <Label Margin="16,195,326.333,94.667" FontWeight="Bold">NewPassword</Label>
+        <PasswordBox x:Name="NewPasswordTextBox" Margin="118,198,29.333,86.667"/>
+        <Button x:Name="OKButton" Content="SUCCESS" Click="OK_Click" Margin="114,259,108.333,29.667"/>
+    </Grid>
+</Window>
