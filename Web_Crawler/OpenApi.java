@@ -17,35 +17,32 @@ import org.w3c.dom.Node;
 import org.w3c.dom.NodeList;
 import org.xml.sax.InputSource;
  
-public class Practice {
+ 
+public class OpenApi {
     public static void main(String[] args) {
         BufferedReader br = null;
-        //DocumentBuilderFactory 생성
         DocumentBuilderFactory factory = DocumentBuilderFactory.newInstance();
         factory.setNamespaceAware(true);
         DocumentBuilder builder;
         Document doc = null;
-        try {
-            //OpenApi호출
-            String urlstr = "http://www.weather.go.kr/weather/forecast/mid-term-rss3.jsp?stnId=109";
+        try{            
+            String urlstr = "xml주소";
             URL url = new URL(urlstr);
             HttpURLConnection urlconnection = (HttpURLConnection) url.openConnection();
-            
-            //응답 읽기
-            br = new BufferedReader(new InputStreamReader(urlconnection.getInputStream(), "UTF-8"));
+            urlconnection.setRequestMethod("GET");
+            br = new BufferedReader(new InputStreamReader(urlconnection.getInputStream(),"UTF-8"));
             String result = "";
             String line;
-            while ((line = br.readLine()) != null) {
-                result = result + line.trim();
+            while((line = br.readLine()) != null) {
+                result = result + line + "\n";
             }
-            
-            // xml 파싱하기
             InputSource is = new InputSource(new StringReader(result));
             builder = factory.newDocumentBuilder();
             doc = builder.parse(is);
             XPathFactory xpathFactory = XPathFactory.newInstance();
             XPath xpath = xpathFactory.newXPath();
-            XPathExpression expr = xpath.compile("//location/data");
+            XPathExpression expr = xpath.compile("//item");
+            XPathExpression ex = xpath.compile("//item/announceTime");
             NodeList nodeList = (NodeList) expr.evaluate(doc, XPathConstants.NODESET);
             for (int i = 0; i < nodeList.getLength(); i++) {
                 NodeList child = nodeList.item(i).getChildNodes();
@@ -59,8 +56,8 @@ public class Practice {
                     System.out.println("");
                 }
             }
-        } catch (Exception e) {
-            System.out.println(e.getMessage());
+        }catch(Exception ex){
+            System.out.println(ex.getMessage());
         }
     }
 }
