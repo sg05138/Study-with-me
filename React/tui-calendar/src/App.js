@@ -1,4 +1,4 @@
-import React, { useCallback, useRef, useState } from "react";
+import React, { useCallback, useEffect, useRef, useState } from "react";
 
 import Calendar from "@toast-ui/react-calendar";
 import { ISchedule, ICalendarInfo } from "tui-calendar";
@@ -14,7 +14,7 @@ import { exportNamedDeclaration } from "@babel/types";
 const start = new Date();
 const end = new Date(new Date().setMinutes(start.getMinutes() + 30));
 
-const schedules: ISchedule[] = [
+const schedules = [
     {
         calendarId: "1",
         category: "time",
@@ -37,7 +37,7 @@ const schedules: ISchedule[] = [
     },
 ];
 
-const calendars: ICalendarInfo[] = [
+const calendars = [
     {
         id: "1",
         name: "My Calendar",
@@ -46,18 +46,11 @@ const calendars: ICalendarInfo[] = [
         dragBgColor: "#9e5fff",
         borderColor: "#9e5fff",
     },
-    {
-        id: "2",
-        name: "Company",
-        color: "#ffffff",
-        bgColor: "#00a9ff",
-        dragBgColor: "#00a9ff",
-        borderColor: "#00a9ff",
-    },
 ];
 
 function App() {
     const cal = useState(useRef(null));
+    const [nowMonth, setNowMonth] = useState();
 
     const onClickSchedule = useCallback((e) => {
         console.log(e);
@@ -105,7 +98,7 @@ function App() {
         const h = date.getHours();
         const m = date.getMinutes();
 
-        return `${h}:${m}`;
+        return `${h}-${m}`;
     }
 
     function _getTimeTemplate(schedule, isAllDay) {
@@ -151,15 +144,35 @@ function App() {
     const expand = () => {
         document.querySelector(".App").style.width = "100%";
     };
+    function moveToNextOrPrevRange(val) {
+        if (val === -1) {
+            cal.current.calendarInst.prev();
+        } else if (val === 1) {
+            cal.current.calendarInst.next();
+        }
+        console.log(cal.current.calendarInst.getDate());
 
+        var tzDate = cal.current.calendarInst.getDate();
+        var date = new Date(tzDate);
+
+        setNowMonth(date.getMonth() + 1);
+    }
+    useEffect(() => {
+        var tzDate = cal.current.calendarInst.getDate();
+        var date = new Date(tzDate);
+        console.log(date.getMonth() + 1);
+
+        setNowMonth(date.getMonth() + 1);
+        cal.current.calendarInst.changeView("month", true);
+    }, []);
     return (
         <div className="App">
-            <h1>달력</h1>
-            <button onClick={() => changeView("month")}>월</button>
-            <button onClick={() => changeView("week")}>주</button>
-            <button onClick={() => changeView("day")}>일</button>
-            <button onClick={() => expand()}>확대</button>
-            <button onClick={() => collapse()}>축소</button>
+            <h1>{nowMonth}</h1>
+
+            {/* <button onClick={() => expand()}>확대</button>
+            <button onClick={() => collapse()}>축소</button> */}
+            <button onClick={() => moveToNextOrPrevRange(1)}>다음이용</button>
+            <button onClick={() => moveToNextOrPrevRange(-1)}>이전이에용이용</button>
 
             <Calendar
                 ref={cal}
