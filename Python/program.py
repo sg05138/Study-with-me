@@ -55,7 +55,7 @@ driver.find_element_by_xpath('//*[@id="lnb"]/div[1]/div/ul/li[4]').click()
 # Blog 게시물 불러오기
 wrapper = driver.find_elements_by_class_name('_more_contents_event_base')[0]
 item_list = wrapper.find_elements_by_class_name('_svp_item')
-print(f"{len(item_list)}개 의 POST가 있습니다")
+print(f"{len(item_list)}개 의 게시물이 있습니다")
 
 for item in item_list:
     title_elm = item.find_elements_by_class_name('total_tit')[0]
